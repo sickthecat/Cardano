@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cardano Stake Pool Dashboard</title>
+</head>
+<body>
+  <h1>Cardano Stake Pool Dashboard</h1>
+  {% if data %}
+    <h2>{{ data.name }}</h2>
+    <p>{{ data.description }}</p>
+    <p>Created in epoch {{ data.createdAt.epoch.id }}</p>
+    <p>Blocks produced: {{ data.blocksProduced.totalCount }}</p>
+    <p>Blocks missed: {{ data.blocksMissed.totalCount }}</p>
+    <p>Live stake: {{ data.liveStake.quantity }} ADA</p>
+    <h3>Owners</h3>
+    <ul>
+    {% for owner in data.owners %}
+      <li>{{ owner.name }} ({{ owner.address }})</li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>Unable to retrieve stake pool information.</p>
+  {% endif %}
+</body>
+</html>
