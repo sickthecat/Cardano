@@ -2,24 +2,66 @@
 <html>
 <head>
   <title>Cardano Stake Pool Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Cardano Stake Pool Dashboard</h1>
-  {% if data %}
-    <h2>{{ data.name }}</h2>
-    <p>{{ data.description }}</p>
-    <p>Created in epoch {{ data.createdAt.epoch.id }}</p>
-    <p>Blocks produced: {{ data.blocksProduced.totalCount }}</p>
-    <p>Blocks missed: {{ data.blocksMissed.totalCount }}</p>
-    <p>Live stake: {{ data.liveStake.quantity }} ADA</p>
-    <h3>Owners</h3>
-    <ul>
-    {% for owner in data.owners %}
-      <li>{{ owner.name }} ({{ owner.address }})</li>
-    {% endfor %}
-    </ul>
-  {% else %}
-    <p>Unable to retrieve stake pool information.</p>
-  {% endif %}
+  <div class="container">
+    <h1>Cardano Stake Pool Dashboard</h1>
+    {% if data %}
+      <h2>{{ data.name }}</h2>
+      <p>{{ data.description }}</p>
+      <p>Created in epoch {{ data.createdAt.epoch.id }}</p>
+      <p>Blocks produced: {{ data.blocksProduced.totalCount }}</p>
+      <p>Blocks missed: {{ data.blocksMissed.totalCount }}</p>
+      <p>Live stake: {{ data.liveStake.quantity }} ADA</p>
+      <h3>Owners</h3>
+      <ul>
+      {% for owner in data.owners %}
+        <li>{{ owner.name }} ({{ owner.address }})</li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <p>Unable to retrieve stake pool information.</p>
+    {% endif %}
+  </div>
 </body>
 </html>
