@@ -3,7 +3,7 @@
 First, you need to install the necessary libraries:
 
 ```python
-pip install Flask requests
+pip3 install Flask requests
 ```
 
 
